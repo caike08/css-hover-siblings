@@ -1,0 +1,72 @@
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #171c20;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Everything before the hovered element
+ * Since we can't select previous elements,
+ * we simply set it as the default and then overwrite subsequent elements 
+ */
+
+.hover {
+  background: #8C7AA9;
+}
+
+.hover:before {
+  content: 'Before';
+}
+
+/* The Hovered element*/
+.hover:focus,
+.hover:hover {
+  background: #4E4063;
+  cursor: pointer;
+}
+
+.hover:focus:before,
+.hover:hover:before {
+  content: 'Hovered';
+}
+
+/* Everything after the hovered element */
+.hover:focus ~ *,
+.hover:hover ~ * {
+  background: #6589B8;
+}
+
+.hover:focus ~ *:before,
+.hover:hover ~ *:before {
+  content: 'After';
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 16px;
+}
+
+.hover {
+  flex: 1 1 25%;
+  margin: 0 3px;
+  padding: 2rem 4rem;
+  text-align: center;
+  border-radius: 8px;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.hover:before {
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
